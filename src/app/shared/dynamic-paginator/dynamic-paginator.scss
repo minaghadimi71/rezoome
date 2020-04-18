@@ -1,0 +1,68 @@
+$caynac-dark-blue-color: #34495e;
+$caynac-very-light-blue-color: #E8F5F8;
+
+#paginator {
+  .kt-section__content {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .page-select-box {
+    width: 30% !important;
+  }
+
+  .form-group {
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .flex-container.select-box {
+    width: 260px;
+
+    label {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    .page-item .page-link {
+      color: $caynac-dark-blue-color !important;
+      margin: 3px;
+      border-radius: 5px;
+      border-color: $caynac-very-light-blue-color !important;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $caynac-very-light-blue-color !important;
+      }
+    }
+
+    .page-item.active .page-link,
+    .page-item .page-link[aria-label="Last"],
+    .page-item .page-link[aria-label="Previous"],
+    .page-item .page-link[aria-label="Next"],
+    .page-item .page-link[aria-label="First"] {
+      border-color: $caynac-dark-blue-color !important;
+      background-color: $caynac-dark-blue-color !important;
+      color: $caynac-very-light-blue-color !important;
+      cursor: pointer;
+    }
+
+    .page-item .page-link.disabled {
+      border-color: lighten($caynac-dark-blue-color, 40%) !important;
+      background-color: lighten($caynac-dark-blue-color, 40%) !important;
+      cursor: not-allowed;
+    }
+  }
+}

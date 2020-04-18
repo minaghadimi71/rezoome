@@ -1,0 +1,19 @@
+<div class="comment">
+  <div class="container comment_item">
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <div class="title mb-3" *ngFor="let product of products">
+          <button class="float-right btn" (click)="removeProduct(product)">
+            &times;
+          </button>
+          <div class="product_title">{{product.name}}
+          </div>
+          <p class="product_price">Price : {{product.price}} * {{product.number}}</p>
+          <p class="product_popularity">Popularity : {{product.popularity}}
+            <img src="../../../assets/images/heart.png">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,188 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <h5>
+        <i class="fa fa-info-circle"></i>
+        canDeactivate:
+      </h5>
+      <div class="card">
+        <div class="card-header bg-info text-white">
+          <h5>
+            <i class="fa fa-info-circle"></i>
+            Add custom quiz (Reactive forms):
+          </h5>
+          <div class="form-group">
+            <label>
+              Directive:
+            </label>
+            <input
+              type="text"
+              [(ngModel)]="color"
+              class="form-control"
+              [appColor]="color">
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="addQuizForm"
+                (ngSubmit)="onSubmitted()"
+                #ngFormQuiz="ngForm">
+            <div class="form-group">
+              <label for="name">
+                Name:(sync Validator: "mina and asal is forbidden")
+              </label>
+              <input type="text" id="name"
+                     class="form-control" formControlName="name">
+              <div class="invalid-feedback d-inline"
+                   *ngIf="haveError('name', addQuizForm)">
+                <span *ngIf="errorMessage('name', addQuizForm)
+                && errorMessage('name', addQuizForm)['required']">
+                Please enter name
+              </span>
+                <span *ngIf="errorMessage('name', addQuizForm)
+                && errorMessage('name', addQuizForm)['forbiddenName']">
+                This name is invalid
+              </span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="surname">
+                Surname:(async validator: "ghadimi is forbidden")
+              </label>
+              <input type="text"
+                     id="surname"
+                     class="form-control"
+                     formControlName="surname">
+              <div class="invalid-feedback d-inline"
+                   *ngIf="haveError('surname', addQuizForm)">
+                <span *ngIf="errorMessage('surname', addQuizForm)
+                && errorMessage('surname', addQuizForm)['required']">
+                Please enter surname
+              </span>
+                <span
+                  *ngIf="errorMessage('surname', addQuizForm)
+                && errorMessage('surname', addQuizForm)['forbiddenSurname']">
+                This surname is invalid
+              </span>
+              </div>
+            </div>
+            <i class="fa fa-info-circle"></i>
+            Form Group Example:
+            <div class="form-row mt-3" formGroupName="address">
+              <div class="col-md-6">
+                <label for="country">
+                  Country:
+                </label>
+                <input type="text" id="country"
+                       class="form-control"
+                       formControlName="country">
+              </div>
+              <div class="col-md-6">
+                <label for="city">
+                  city:
+                </label>
+                <input type="text" id="city"
+                       class="form-control"
+                       formControlName="city">
+              </div>
+            </div>
+            <div class="invalid-feedback d-inline"
+                 *ngIf="haveError('address', addQuizForm)">
+              Address is required!
+            </div>
+            <div class="form-group mt-3">
+              <label>
+                Gender:
+              </label>
+              <div class="custom-control custom-radio">
+                <div *ngFor="let gender of genders">
+                  <input type="radio"
+                         [id]="gender"
+                         class="custom-control-input"
+                         [value]="gender"
+                         name="gender"
+                         formControlName="gender">
+                  <label class="custom-control-label"
+                         [for]="gender">
+                    {{gender}}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="question">
+                <i class="fa fa-info-circle"></i>
+                Question ("what time is it?" is forbidden "Async validator"):
+              </label>
+              <input type="text" id="question"
+                     class="form-control" formControlName="question">
+              <div class="invalid-feedback d-inline"
+                   *ngIf="haveError('question', addQuizForm)">
+                <span *ngIf="errorMessage('question', addQuizForm) &&
+                errorMessage('question', addQuizForm)['required']">
+                please enter question
+              </span>
+                <span
+                  *ngIf="errorMessage('question', addQuizForm)
+                && errorMessage('question', addQuizForm)['forbiddenQuestion']">
+               This question is invalid
+              </span>
+              </div>
+            </div>
+            <button class="btn btn-info mb-3" (click)="addResponse()" [disabled]="disable">Add Response</button>
+            <div formArrayName="responses">
+              <div *ngFor="let response of responses.controls;let i=index">
+                <div class="form-group">
+                  <label [for]="i">
+                    Response - {{i}}:
+                  </label>
+                  <div class="flex-row">
+                    <input type="text" [id]="i"
+                           class="form-control" [formControlName]="i">
+                    <button class="btn"
+                            type="button"
+                            (click)="removeResponse(i)">
+                      &times;
+                    </button>
+                  </div>
+                  <div class="invalid-feedback d-inline"
+                       *ngIf="haveError('responses', addQuizForm, +i)">
+                <span
+                  *ngIf="errorMessage('responses', addQuizForm, +i) && errorMessage('responses', addQuizForm, +i)['required']">
+                please enter response
+              </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="number">
+                  Number: (custom validator *5)
+                </label>
+                <input type="number" id="number"
+                       class="form-control"
+                       formControlName="number"
+                       appCustomNumberValidator
+                       [appNumber]="5"
+                       step="5">
+                <div class="invalid-feedback d-inline"
+                     *ngIf="haveError('number', addQuizForm)">
+                <span *ngIf="errorMessage('number', addQuizForm)
+                && errorMessage('number', addQuizForm)['required']">
+                Please enter number
+              </span>
+                  <span *ngIf="errorMessage('number', addQuizForm)
+                && errorMessage('number', addQuizForm)['appCustomNumberValidator']">
+                This number is invalid (*5)
+              </span>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-info" [disabled]="addQuizForm.invalid || addQuizForm.pending">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

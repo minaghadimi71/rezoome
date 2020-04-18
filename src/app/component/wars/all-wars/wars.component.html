@@ -1,0 +1,56 @@
+<div class="bagloos">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="logo_area text-center">
+          <span class="bagloos-logo">
+            Mina project
+          </span>
+          <span class="food">
+            <i class="fa fa-info-circle"></i>
+            Components & Databinding</span>
+          <img src="../../../../assets/images/star-yellow.png" class="mx-1">
+          <img src="../../../../assets/images/star-yellow.png" class="mx-1">
+          <img src="../../../../assets/images/star-yellow.png" class="mx-1">
+          <img src="../../../../assets/images/star-yellow.png" class="mx-1">
+          <img src="../../../../assets/images/star-yellow.png" class="mx-1">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-bottom: 60px">
+    <div class="row">
+      <div class="col-lg-4 col-md-6  mb-4"
+           *ngFor="let product of products">
+        <app-ware
+          [product]="product"
+          (add)="onAdded($event)"
+          (remove)="onRemoved($event)">
+        </app-ware>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center mb-3">
+          <span>Total price :
+            {{allPrice}}
+          </span>
+        </div>
+        <div class="col-md-4 text-center mb-3">
+          <button class="btn" (click)="saveProductSells()">SAVE CARD</button>
+        </div>
+        <div class="col-md-4 text-center mb-3">
+          <div>
+            <i class="fa fa-shopping-cart">
+              <span class="dropdown-count">
+                {{t}}
+              </span>
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

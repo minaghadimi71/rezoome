@@ -1,0 +1,31 @@
+.right {
+  position: fixed;
+  right: 20px;
+  top: 61px;
+  width: 300px;
+  z-index: 9999;
+}
+.succeed{
+  background-color: green;
+}
+.error{
+  background-color: red;
+}
+.warning{
+  background-color: orangered;
+}
+.width{
+  position: fixed;
+  right: 25%;
+  left: auto;
+  top: 0;
+  width: 50%;
+  z-index: 9999;
+}
+:host {
+  ::ng-deep {
+    .toast.width{
+      max-width: 100% !important;
+    }
+  }
+  }

@@ -1,0 +1,38 @@
+<div class="product_item">
+  <div class="product_image">
+    <img src="{{product.image}}"
+         [alt]="product.name">
+    <div class="product_title_container text-center">
+      <div class="product_new" *ngIf="product.new">
+        <img src="../assets/images/cloud.png">
+        <br>
+        new
+      </div>
+      <div class="product_popularity">
+        <button class="btn"
+                (click)="onAddPopularity()">
+          <img src="../../assets/images/heart.png"></button>
+        <br>{{product.popularity}}</div>
+      <div class="product_title">
+        <h1 [ngStyle]="{backgroundColor: getColor()}"
+            [ngClass]="{greater: getColor() === 'red',
+            big: getColor() === 'green'}">{{product.name}}
+        </h1>
+      </div>
+      <div class="product_price">${{product.price}}</div>
+    </div>
+  </div>
+  <div class="product_button">
+    <button class="shop_button" (click)="onAddCard()">
+      <span>+</span>
+    </button>
+    <div class="shop_p">{{product.number}}</div>
+    <button class="shop_button"
+            (click)="onRemoveCard()"
+            [ngClass]="{'disabled': !active}"
+            [disabled]="!active">
+      <span>-</span></button>
+  </div>
+</div>
+
+

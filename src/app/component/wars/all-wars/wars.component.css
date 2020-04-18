@@ -1,0 +1,67 @@
+.footer{
+  padding: 20px 0;
+  background-color: gainsboro;
+  color: gray;
+}
+.footer i {
+  position: relative;
+}
+.footer .dropdown-count {
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 10px;
+  right: auto;
+  line-height: 1.43;
+  min-width: 19px;
+  padding: 2px 6px;
+  position: absolute;
+  left: -18px;
+  text-align: center;
+  text-shadow: none;
+  top: -17px;
+  vertical-align: text-top;
+  white-space: nowrap;
+  z-index: 1;
+}
+.bagloos .logo_area{
+  margin: 30px 0;
+  padding: 35px 0 20px 0;
+  background-color: #fee2d9;
+  border-radius: 2px;
+  box-shadow: 2px 3px 18px gainsboro;
+  transition: all 0.8s;
+  color: #232d37;
+}
+.bagloos .logo_area:hover{
+  padding: 35px 35px 20px 0;
+}
+.bagloos .logo_area .bagloos-logo {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 60px;
+  margin-bottom: 10px;
+  display: block;
+}
+.bagloos .logo_area .food {
+  font-size: 30px;
+  font-family: 'Quicksand', sans-serif;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo_area{
+    position: relative;
+    width: 70%;
+    left: 15%;
+    padding: 15px 0 10px 0;
+  }
+  .bagloos .logo_area .bagloos-logo {
+    font-size: 40px;
+  }
+  .bagloos .logo_area .food {
+    font-size: 15px;
+  }
+}
+
+

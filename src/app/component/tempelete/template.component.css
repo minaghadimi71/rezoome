@@ -1,0 +1,7 @@
+
+.ng-dirty.ng-touched.ng-invalid{
+  border-color: red !important;
+}
+.card{
+  padding: 20px;
+}

@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12 text-danger">
+          <p><i class="fa fa-info-circle"></i>
+            Observable(lock page - 2 min without action)
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label class="text-danger">
+            <i class="fa fa-info-circle"></i>
+            Pipes(with name):
+          </label>
+          <input type="text"
+                 [(ngModel)]="searchParam"
+                 class="form-control mb-3"
+                 placeholder="Search...">
+        </div>
+        <div class="col-md-3 offset-md-3 mt-4">
+          <button type="button" class="btn btn-info float-right"
+                  [routerLink]="['/add-quiz']"
+          >Add quiz</button>
+        </div>
+      </div>
+      <table class="table
+      table-info">
+        <thead>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Question</th>
+        <th>Number</th>
+        <th>Delete</th>
+        </thead>
+        <tbody style="position: relative">
+        <tr *ngFor="let quiz of quizs | Filter: searchParam: 'name'"
+            mwlDroppable mwlDraggable style=" position: absolute"
+            (dragEnd)="dragEnd($event, quiz)"
+            (drop)="dropItem($event, quiz.row)"
+            [style.top]="calculateTop(quiz)"
+            [style.z-index]="calculateZ(quiz)"
+            (dragStart)="dragEnd($event, quiz)">
+          <td>{{quiz.name}}</td>
+          <td>{{quiz.surname}}</td>
+          <td>{{quiz.question}}</td>
+          <td>{{quiz.number}}</td>
+          <td>
+            <button class="btn" (click)="deleteQuiz(quiz.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header badge-info text-white">
+          <i class="fa fa-info-circle"></i>
+          Send request: (see NetWork)
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <select [(ngModel)]="sortable" (change)="changeSort()" class="form-control page-select-box">
+                <option [value]="'name'">Name</option>
+                <option [value]="'status'">Status</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-12">
+              <app-paginator
+                [pageNumbers]="pageNumbers"
+                [sort]="sortable"
+                (data)="getQuiz($event)">
+              </app-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

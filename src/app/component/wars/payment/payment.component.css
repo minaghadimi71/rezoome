@@ -1,0 +1,62 @@
+.comment {
+  position: relative;
+  background-size: cover;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.comment:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: '';
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: -1;
+}
+.comment_item{
+  padding: 30px 0;
+
+}
+.product_image{
+  box-shadow: 2px 3px 18px gainsboro;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.product_image img{
+  border-radius: 20px;
+}
+.title{
+  font-family: 'Shadows Into Light Two', cursive;
+  box-shadow: 2px 3px 18px gainsboro;
+  padding: 25px 40px;
+  transition: all 0.5s;
+}
+.product_title{
+  padding: 9px;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #fee2d9;
+  border-radius: 2px;
+  color: #232d37;
+  font-family: 'Shadows Into Light Two', cursive;
+
+}
+.title:hover{
+  padding-top: 37px;
+  padding-bottom: 13px;
+}
+
+@media(max-width: 768px) {
+  .product_image{
+    margin-bottom: 20px;
+  }
+  .comment_item{
+    position: relative;
+    width: 70%;
+  }
+}

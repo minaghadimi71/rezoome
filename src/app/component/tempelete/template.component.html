@@ -1,0 +1,192 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Template form example(after submit data saved in localstorage)</h4>
+      <div class="card">
+      <form (ngSubmit)="onSubmit()"
+            #formTemplate="ngForm">
+        <div class="form-row mt-3">
+          <div class="col-md-6">
+            <label for="inputNumber">
+              Step for input number:
+            </label>
+            <input type="number"
+                   class="form-control"
+                   id="inputNumber"
+                   name="inputSteps"
+                   [(ngModel)]="inputNumberStep"
+                   (input)="number.reset()">
+          </div>
+          <div class="col-md-6">
+            <label for="number">
+              Number:
+            </label>
+            <input type="number"
+                   class="form-control"
+                   id="number"
+                   name="number"
+                   ngModel
+                   #number="ngModel"
+                   appCustomNumberValidator
+                   [appNumber]="inputNumberStep"
+                   step="inputNumberStep"
+                   required
+                   [disabled]="!inputNumberStep">
+            <div class="invalid-feedback d-inline"
+                 *ngIf="!number.valid && number.touched">
+          <span *ngIf="number?.errors.required">
+            Please enter a value
+          </span>
+              <span *ngIf="number?.errors.appCustomNumberValidator">
+            Value should be {{inputNumberStep}} * this
+          </span>
+            </div>
+          </div>
+        </div>
+        <div ngModelGroup="userData"
+             #dataLOgin="ngModelGroup"
+             class="mt-3">
+          <div class="form-group ">
+            <label for="email">
+              Email:
+            </label>
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="Enter email"
+                   name="email"
+                   ngModel
+                   required
+                   email
+                   #email="ngModel">
+            <div class="invalid-feedback d-inline"
+                 *ngIf="!email.valid && email.touched">
+        <span *ngIf="email?.errors.required">
+          Please enter a email
+        </span>
+              <span *ngIf="email?.errors.email">
+          Please enter a valid email
+        </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pwd">
+              Password:
+            </label>
+            <input type="password"
+                   class="form-control"
+                   id="pwd"
+                   placeholder="Enter password"
+                   name="pwd"
+                   ngModel
+                   #pass="ngModel"
+                   required
+                   maxlength="12"
+                   minlength="5">
+            <div class="invalid-feedback d-inline"
+                 *ngIf="!pass.valid && pass.touched">
+        <span *ngIf="pass?.errors.required">
+          please enter password
+        </span>
+              <span *ngIf="pass?.errors.maxlength">
+          Error max
+        </span>
+              <span *ngIf="pass?.errors.minlength">
+          Error min
+        </span>
+            </div>
+          </div>
+          <div *ngIf="!dataLOgin.valid && dataLOgin.touched"
+               class="invalid-feedback d-inline">
+        <span>
+          Enter user data login
+        </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="remember" ngModel>
+              Remember me
+            </label>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label>Gender:</label>
+          <div class="custom-control custom-radio">
+            <div *ngFor="let gender of genders">
+              <input type="radio"
+                     name="gender"
+                     [id]="gender"
+                     class="custom-control-input"
+                     [value]="gender"
+                     ngModel>
+              <label class="custom-control-label"
+                     [for]="gender">
+                {{gender}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="member">
+            Member:
+          </label>
+          <select
+            ngModel
+            name="members"
+            class="form-control"
+            id="member">
+            <option value="" disabled class="d-none">
+              select member please
+            </option>
+            <option *ngFor="let state of states"
+                    [ngValue]="state">
+              {{ state }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="massage">
+            massage
+          </label>
+          <textarea class="form-control"
+                    rows="5" name="massage"
+                    [(ngModel)]="massage"
+                    id="massage">
+      </textarea>
+          <p class="mt-3">{{massage}}</p>
+        </div>
+        <button type="submit"
+                class="btn btn-primary mr-3"
+                [disabled]="formTemplate.invalid">
+          Submit
+        </button>
+        <button type="button"
+                (click)="setValue()"
+                class="btn btn-primary mr-3">
+          setValue
+        </button>
+        <button type="button"
+                (click)="pathValue()"
+                class="btn btn-primary">
+          pathValue
+        </button>
+      </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Data of user:(after submit get data from localstorage)</h4>
+      <div class="card" *ngIf="isShow">
+          <p>inputSteps: {{user.inputSteps}}</p>
+          <p>number: {{user.number}}</p>
+          <p>email: {{user.userData.email}}</p>
+          <p>pwd: {{user.userData.pwd}}</p>
+          <p>remember: {{user.remember}}</p>
+          <p>gender: {{user.gender}}</p>
+          <p>members: {{user.members}}</p>
+          <p>massage: {{user.massage}}</p>
+        </div>
+    </div>
+  </div>
+</div>

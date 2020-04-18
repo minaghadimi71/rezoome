@@ -1,0 +1,53 @@
+<div class="background"></div>
+<div class="modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Login Finished!
+          <span class="text-danger">(using promise in this component)</span></h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>please enter password:</p>
+        <div class="form-group">
+          <label for="email">
+            Email:
+          </label>
+          <input id="email" type="email" [disabled]="true" [(ngModel)]="email" class="form-control">
+        </div>
+        <form #loginFinishedForm="ngForm" (ngSubmit)="logIn()">
+          <div class="form-group">
+            <label for="pass">
+              Password:
+            </label>
+            <input type="password" ngModel #password="ngModel"
+                   id="pass"
+                   name="password"
+                   required
+                   minlength="6" maxlength="12"
+                   class="form-control">
+            <div class="invalid-feedback d-inline"
+                 *ngIf="!password.valid && password.touched">
+              <span *ngIf="password?.errors.required">
+                This field is required.
+              </span>
+              <span *ngIf="password?.errors.minlength">
+                Min length for password is 6 Characters.
+              </span>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="logOut()">LOGOUT</button>
+            <button type="submit" class="btn btn-info" [disabled]="!loginFinishedForm.valid">LOGIN</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

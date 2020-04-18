@@ -1,0 +1,69 @@
+<div class="container mt-5">
+  <div class="col-md-8 offset-md-2 col-12 offset-0">
+    <div class="card">
+      <div class="card-header bg-info text-white">
+        <h4>
+          <i class="fa fa-info-circle text-danger"></i>
+          Login(authentication & auttorization)</h4>
+        <span>login/log-out/change password/reset password</span>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="login()"
+              [formGroup]="loginForm">
+          <div class="form-group">
+            <label for="email">
+              Email
+            </label>
+            <input type="text"
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   formControlName="email"
+                   [ngClass]="{'invalid-input': getFeedBack('email', loginForm)}">
+            <div class="invalid-feedback d-inline"
+                 *ngIf="getFeedBack('email', loginForm)">
+              <span *ngIf="getInputErrors('email', loginForm) &&
+               getInputErrors('email', loginForm).required">
+                              This field is required.
+              </span>
+              <span *ngIf="getInputErrors('email', loginForm) &&
+               getInputErrors('email', loginForm).email">
+                              Please enter a valid email.
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">
+              Password:
+            </label>
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   name="password"
+                   formControlName="password"
+                   [ngClass]="{'invalid-input': getFeedBack('password', loginForm)}">
+            <div class="invalid-feedback d-inline"
+                 *ngIf="getFeedBack('password', loginForm)">
+              This field is required.
+            </div>
+          </div>
+          <div class="row mt-3 float-right">
+            <div class="col">
+              <button type="submit"
+                      class="btn btn-info"
+                      [disabled]="!loginForm.valid"
+              >LogIn
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <a [routerLink]="['/register']" href="javascript:;">go to register</a>
+        <div class="float-right">
+          <a [routerLink]="['/reset']" href="javascript:;">go to reset password</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

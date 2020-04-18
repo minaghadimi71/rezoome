@@ -1,0 +1,55 @@
+<div id="paginator">
+      <div class="flex-container">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <button class="page-link" aria-label="First" (click)="changePage(1)"
+                      [disabled]="(page === 1)"
+                      [ngClass]="{'disabled': (page === 1)}">
+                <span aria-hidden="true">&laquo;</span>
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+            <li class="page-item" >
+              <button class="page-link" aria-label="Previous"
+                      (click)="changePage(page - 1)"
+                      [disabled]="disableButton('Previous')"
+                      [ngClass]="{'disabled': disableButton('Previous')}">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </button>
+            </li>
+            <div *ngFor="let item of items">
+              <li class="page-item" [ngClass]="{'active': getActiveClass(item)}">
+                <a class="page-link" (click)="changePage(item)">{{item}}</a></li>
+            </div>
+            <li class="page-item">
+              <button class="page-link" aria-label="Next"
+                      (click)="changePage(page + 1)"
+                      [disabled]="disableButton('next')"
+                      [ngClass]="{'disabled': disableButton('next')}">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </button>
+            </li>
+            <li class="page-item">
+              <button class="page-link" aria-label="Last" (click)="changePage(items.length)"
+                      [disabled]="(page === items.length)"
+                      [ngClass]="{'disabled': (page === items.length)}">
+                <span aria-hidden="true">&raquo;</span>
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <div class="form-group flex-container select-box">
+          <select name="numberProduct" id="numberProduct"
+                  class="form-control page-select-box" [(ngModel)]="perPages" (change)="changePage()">
+            <ng-container *ngFor="let list of pageNumbers">
+              <option [value]="list">{{list}}</option>
+            </ng-container>
+          </select>
+          <label class="caynac-label" for="numberProduct">Display {{perPages}} of {{pageNumbers[2]}} products</label>
+        </div>
+      </div>
+</div>

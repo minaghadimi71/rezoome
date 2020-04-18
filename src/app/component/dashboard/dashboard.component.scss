@@ -1,0 +1,41 @@
+.control-label:after {
+  content: "*";
+  color: red;
+}
+
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+:host ::ng-deep tr {
+  border-bottom: 1px solid blue;
+  border-left: 1px solid blue;
+  border-right: 1px solid blue;
+  border-top: 1px solid blue;
+}
+
+:host ::ng-deep table {
+  width: 550px;
+}
+
+:host ::ng-deep th {
+  width: 110px;
+}
+
+:host ::ng-deep tr {
+  width: 550px;
+  height: 55px;
+  background-color: pink;
+}
+
+:host ::ng-deep td {
+  width: 110px;
+}
+
+:host ::ng-deep tbody {
+  width: 550px;
+}
+
+.disableDelete{
+  color: gray !important;
+}

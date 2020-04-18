@@ -1,0 +1,135 @@
+p {
+  color: black;
+}
+p.greater{
+  color: yellow;
+}
+p.big{
+  font-size: 2em;
+}
+
+.product_item
+{
+  background: pink;
+  padding-bottom: 20px;
+  box-shadow: 2px 3px 18px gainsboro;
+}
+.product_item .product_image
+{
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.product_image img
+{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.product_image .product_title_container
+{
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  bottom: -600px;
+  background: rgba(252, 108, 63, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  transition: 0.8s;
+}
+.product_image:hover .product_title_container{
+  bottom: 0;
+}
+.product_title h1
+{
+  font-size: 36px;
+  line-height: 1.2;
+  font-family: 'Shadows Into Light Two', cursive;
+}
+.product_price
+{
+  font-style: italic;
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 12px;
+  line-height: 0.75;
+}
+.product_new{
+  font-family: 'Shadows Into Light Two', cursive;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: yellow;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.product_new img,.product_popularity img{
+  width: 26px;
+  height: auto;
+}
+.product_popularity{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+.product_view{
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+.product_button
+{
+  margin-top: 20px;
+  background-color: gainsboro;
+  margin-left: 70px;
+  margin-right: 70px;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+  font-family: 'Shadows Into Light Two', cursive;
+  font-weight: bold;
+}
+.shop_button{
+  border: 1px solid pink;
+  padding: 10px 30px;
+  font-size: 25px;
+  color: gray;
+  transition: 0.3s;
+}
+.shop_button:hover{
+  color: gainsboro;
+  background: gray;
+}
+.shop_button:focus{
+  color: gainsboro;
+  background: gray;
+  outline: none;
+}
+.shop_p{
+  padding-top: 10px;
+  font-size: 20px;
+}
+.disabled, .disabled:focus, .disabled:hover{
+  color: gainsboro;
+  background-color: gainsboro;
+}
+@media (max-width: 768px) {
+  .product_item
+  {
+    width: 70%;
+    position: relative;
+    left: 15%;
+  }
+  .product_button {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
